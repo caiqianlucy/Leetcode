@@ -10,7 +10,7 @@ Return the number of teams you can form given the conditions. (soldiers can be p
  * Two Solution:
  * 1. Time: O(n^3), Space: O(1)
  * 2. Time: O(n^2), Space: O(1)
- * 3. Time: O(nlogn), space: O(n), BIT method
+ * 3. Time: O(nlogm), space: O(m), BIT method， m is the size of rating range
  */
 public class LeetCode1395 {
 	public int numTeams(int[] rating) {

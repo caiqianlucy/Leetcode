@@ -48,4 +48,19 @@ public class LeetCode957 {
         }
         return res;
     }
+    public int[] prisonAfterNDays2(int[] cells, int N) {
+        Map<String, Integer> map = new HashMap();
+        while (N > 0){
+            int[] next = new int[8];
+            map.put(Arrays.toString(cells), N--);
+            for (int i = 1; i < 7; i++){
+                next[i] = cells[i-1] == cells[i+1] ? 1:0;
+            }
+            cells = next;
+            if (map.containsKey(Arrays.toString(cells))){
+                N %= (map.get(Arrays.toString(cells)) - N);
+            }
+        }
+        return cells;
+    }
 }

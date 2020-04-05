@@ -7,19 +7,12 @@ public class ParentingPartneringReturns {
 	public static void main(String[] args) {
 		System.out.println("Please Provide input: ");
         Scanner in = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
-        /*List<String> tokens = new ArrayList();
-        while (in.hasNext()){
-        	String s = in.nextLine();
-        	System.out.println(s);
-        	tokens.add(s);
-        }
-        in.close();
-        */
         int t = in.nextInt();
         //System.out.print("\n");
         for (int k = 1; k <= t; k++) {
         	int n = in.nextInt();
         	//System.out.println(n);
+        	int[][] times = new int[n][2];
         	List<int[]> c = new ArrayList();
         	List<int[]> j = new ArrayList();
         	StringBuilder res = new StringBuilder();

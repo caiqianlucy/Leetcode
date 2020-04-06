@@ -1,4 +1,4 @@
-import java.util.TreeMap;
+import java.util.*;
 
 /*author@ Qian Cai
  * Given a array of integers, find the longest subarray, in which difference between any two numbers is less than or equal to D. Return the length of the subarray.
@@ -27,9 +27,38 @@ public class LongestSubarray {
 	   }
 	   return res;
    } 
+   /* Method2： Two Deque Mehod:Time, Space: O(n)
+    * One deque in ascending order, track minimum value
+    * another deque in descending order, track maximum value
+    */
+   public static int longestSubarray2(int[] arr, int d) {
+	   Deque<Integer> desq = new LinkedList();
+	   Deque<Integer> ascq = new LinkedList();
+	   int left = 0, right = 0, res = 0;
+	   while (left <= right && right < arr.length) {
+		   while (!desq.isEmpty() && arr[desq.peekLast()] <arr[right]) {
+			   desq.pollLast();
+		   }
+		   while (!ascq.isEmpty() && arr[ascq.peekLast()] > arr[right]) {
+			   ascq.pollLast();
+		   }
+		   desq.addLast(right);
+		   ascq.addLast(right++);
+		   while (arr[desq.peekFirst()]-arr[ascq.peekFirst()] > d) {
+			   //check which deque has smaller left id
+			   if (desq.peekFirst() < ascq.peekFirst()) {
+				   left = Math.max(left, desq.pollFirst()+1);
+			   } else {
+				   left = Math.max(left, ascq.pollFirst()+1);
+			   }
+		   }
+		   res = Math.max(res,  right-left);
+	   }
+	   return res;
+   }
    public static void main(String[] args) {
 	   int[] arr = new int[] {1, 2, 5, 7, 6, 6};
-	   int res = longestSubarray(arr, 2);
+	   int res = longestSubarray2(arr, 2);
 	   System.out.println(res);
    }
 }

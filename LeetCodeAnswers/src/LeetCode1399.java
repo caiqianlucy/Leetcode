@@ -34,7 +34,7 @@ public class LeetCode1399 {
     //count binary representation digits sum
     public static int countLargestGroup2(int n) {
     	String s = binary(n);
-    	System.out.println(s);
+    	//System.out.println(s);
     	int m = s.length();
     	int[] count = new int[m+1];
     	int prev = 0;
@@ -48,7 +48,7 @@ public class LeetCode1399 {
     	for (int c: count) {
     		if (c > max) max = c;
     	}
-        System.out.println("max is " + max);
+        //System.out.println("max is " + max);
     	int res = 0;
     	for (int c: count) {
     		if (c == max) res++;

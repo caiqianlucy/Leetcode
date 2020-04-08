@@ -11,7 +11,7 @@ Return all critical connections in the network in any order.
 public class LeetCode1192 {
 	List<Integer>[] graph; //graph list of neighboring vertexes
     int[] ids; //the id assigned when it first discovered
-    int[] low; //the lowest id it can be identified
+    int[] low; //the lowest id reachable from that node
     int n; //total servers
     int time; //timestamp of each vertex
     List<List<Integer>> res;
@@ -42,11 +42,12 @@ public class LeetCode1192 {
             if (to == prev) continue; //do not go back to parent server
             if (ids[to] == -1){
                 dfs(to, from);
+                low[from] = Math.min(low[from], low[to]);
                 if (low[to] > ids[from]){
                     res.add(Arrays.asList(from, to));
                 }
             }
-            low[from]= Math.min(low[from], low[to]);
+            low[from]= Math.min(low[from], ids[to]);
         }
     }
 }

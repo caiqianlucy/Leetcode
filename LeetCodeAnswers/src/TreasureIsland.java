@@ -26,6 +26,7 @@ public class TreasureIsland {
     	Queue<int[]> queue = new LinkedList();
     	queue.add(new int[] {0, 0});
     	boolean[][] visited = new boolean[m][n];
+    	visited[0][0] = true;
     	int[][] dirs = new int[][] {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     	while (!queue.isEmpty()) {
     		int size = queue.size();
@@ -37,6 +38,7 @@ public class TreasureIsland {
         			int y = cur[1] + dirs[d][1];
         			if (x >= 0 && x < m && y >= 0 && y < n && island[x][y] != 'D' && !visited[x][y]) {
         				queue.add(new int[] {x, y});
+        				visited[x][y] = true;
         			}
         		}
     		}

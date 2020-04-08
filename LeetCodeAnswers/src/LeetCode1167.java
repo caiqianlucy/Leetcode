@@ -6,7 +6,9 @@ You can connect any two sticks of lengths X and Y into one stick by paying a cos
  You perform this action until there is one stick remaining.
 
 Return the minimum cost of connecting all the given sticks into one stick in this way.
- * Time: nlogn, space(n)
+ * Time: nlogn, space(n), it is a typical priority queue problem, every step, you pick two
+ * shortest sticks and connect them and put the new one back to the queue. keep the process until
+ * only one stick remaining in the queue.
  */
 import java.util.PriorityQueue;
 public class LeetCode1167 {

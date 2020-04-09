@@ -2,7 +2,7 @@
  * 1. expand from center, time: o(nlogn) space: o(1)
  * 2. Manacher's algorithm, time: o(n) 
  */
-public class LeetCode5 extends LeetCode1102 {
+public class LeetCode5  {
 	public String longestPalindrome(String s) {
         if (s == null ||s.length() < 1) return "";
         int l = 0, r = 0;

@@ -18,8 +18,9 @@ Return an array containing the result for the given queries.
  * Time complexity: O(nlog(n+m)), Space(O(n+m))
  * ============================================================================
  */
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
+
+
 public class LeetCode1409 {
 	class Solution {
 	    public int[] processQueries(int[] queries, int m) {

@@ -6,6 +6,8 @@
  *   rules of this new language. Derive the order of letters in this language.
  * ==========================
  * dfs
+ * Using an extra seen map to check whether a character is visited and
+ * detect whether there is a cycle
  * Time: O(c), c is the length of all the word in the words array
  * ==========================
  */
@@ -38,12 +40,12 @@ public class LeetCode269 {
     }
     public boolean dfs(char c){
         if (seen.containsKey(c)) return seen.get(c);
-        seen.put(c, true);
+        seen.put(c, true); //is visiting
         for (char nei: reverseAdjList.get(c)){
             boolean cycle = dfs(nei);
             if (cycle) return true;
         }
-        seen.put(c, false);
+        seen.put(c, false); //finished dfs of all children nodes
         res.append(c);
         return false;
     }

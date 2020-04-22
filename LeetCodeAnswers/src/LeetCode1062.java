@@ -61,7 +61,7 @@ public class LeetCode1062 {
     	HashSet<Long> seen = new HashSet();
     	seen.add(h);
     	for (int start = 1; start < n - len + 1; start++) {
-    		h = ((h*a - nums[start-1])*al % mod + mod)%mod; // +mod in case of negative value
+    		h = (h*a - nums[start-1]*al % mod + mod)%mod; // +mod in case of negative value
     		h = (h+nums[start+len-1])%mod;
     		if (seen.contains(h)) return true;
     		seen.add(h);

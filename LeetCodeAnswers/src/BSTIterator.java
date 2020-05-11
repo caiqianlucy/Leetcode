@@ -8,7 +8,7 @@ Calling next() will return the next smallest number in
 the BST.
  * 
  * Solution: Inorder traversal to flattern the tree
- * Time: O(n)
+ * Time: O(n) for initialize, O(1) for next() and hasNext()
  * Space: O(n)
  */
 import java.util.*;

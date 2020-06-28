@@ -7,7 +7,7 @@
 public class MaxSumPop {
   public static int maxSumPop(int[] arr) {
 	  int n = arr.length;
-	  int[][] dp = new int[n][n+1]; // dp[i][l] is the from i with len l after popping all the rest element
+	  int[][] dp = new int[n][n+1]; // dp[i][l] is maxSum so far when left (range from i with len l) after popping all the rest element
 	  int res = 0;
 	  for (int l = n-1; l >= 0; l--) {
 		  int fac = n-l;

@@ -32,7 +32,7 @@ xi form a strictly increasing sequence.
 import java.util.*;
 public class LeetCode1499 {
 	public int findMaxValueOfEquation(int[][] points, int k) {
-        Deque<int[]> deque = new LinkedList();
+        Deque<int[]> deque = new LinkedList(); //decreasing stack of y-x
         int res = Integer.MIN_VALUE;
         for (int[] point: points){
             int x = point[0], y = point[1];

@@ -6,7 +6,7 @@
  * Solution: 
  * PriorityQueue
  * Time complexity O(mnlog(m+n))
- * Spce complexity O(m+n)
+ * Space complexity O(m+n)
  */
 import java.util.*;
 public class LeetCode407 {

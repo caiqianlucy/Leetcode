@@ -40,7 +40,7 @@ public class LeetCode809 {
             int n = ca.length;
             int prev = -1;
             for (int i = 0; i < n; i++){
-                if (i == n-1 || ca[i] != ca[i+1]){
+                if (i == S.length()-1 || ca[i] != ca[i+1]){
                     sb.append(ca[i]);
                     counts.add(i-prev);
                     prev = i;

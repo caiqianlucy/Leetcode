@@ -12,6 +12,7 @@ Return the minimum number of steps to reach the last index of the array.
 Notice that you can not jump outside of the array at any time.
  * 
  */
+import java.util.*;
 public class LeetCode1345 {
 	 public int minJumps(int[] arr) {
 	        int n = arr.length;

@@ -4,7 +4,10 @@
 
 You may assume that the intervals were initially sorted according to their start times.
  * 
+ * greedy
+ * time: O(n) space: O(n) for res
  */
+import java.util.*;
 public class LeetCode57 {
 	public int[][] insert(int[][] intervals, int[] newInterval) {
         List<int[]> res = new ArrayList();

@@ -9,7 +9,8 @@ Suppose M(initial) is the final number of nodes infected with malware in the ent
 We will remove one node from the initial list.  Return the node that if removed, would minimize M(initial).  If multiple nodes could be removed to minimize M(initial), return such a node with the smallest index.
 
 Note that if a node was removed from the initial list of infected nodes, it may still be infected later as a result of the malware spread.
- * Time: O(n*n) Space: O(n), Union Find
+ * Time: O(n*n) Space: O(n), Solution1: Union Find 
+ * Solution2: Color coding
  */
 import java.util.Arrays;
 public class LeetCode924 {
@@ -70,5 +71,55 @@ public class LeetCode924 {
 	                size[xP] += size[yP];
 	            }
 	        }  
+	    }
+	    class Solution {
+	        public int minMalwareSpread(int[][] graph, int[] initial) {
+	            //color each node
+	            int n = graph.length;
+	            int[] colors = new int[n];
+	            Arrays.fill(colors, -1);
+	            int color = 0;
+	            for (int node = 0; node < n; node++){
+	                if (colors[node] == -1){
+	                    dfs(graph, colors, node, color++);
+	                }
+	            }
+	            int[] colorCount = new int[color];
+	            for (int c: colors){
+	                colorCount[c]++;
+	            }
+	            int[] initialCount = new int[color];
+	            for (int i: initial){
+	                initialCount[colors[i]]++;
+	            }
+	            int ans = n+1;
+	            //only unique color in the initial list if removed can prevent spread of malware
+	            for (int node: initial){
+	                int c = colors[node];
+	                if (initialCount[c] == 1){
+	                    if (ans == n+1){
+	                        ans = node;
+	                    } else if (colorCount[c] > colorCount[colors[ans]]){
+	                        ans = node;
+	                    } else if (colorCount[c] == colorCount[colors[ans]] && node < ans){
+	                        ans = node;
+	                    }
+	                }
+	            }
+	            if (ans == n+1){
+	                for (int node: initial){
+	                    ans = Math.min(ans, node);
+	                }
+	            }
+	            return ans;        
+	        }
+	        public void dfs(int[][] graph, int[] colors, int node, int color){
+	            colors[node] = color;
+	            for (int nei = 0; nei < graph.length; nei++){
+	                if (graph[node][nei] == 1 && colors[nei] == -1){
+	                    dfs(graph, colors, nei, color);
+	                }
+	            }
+	        }
 	    }
 }

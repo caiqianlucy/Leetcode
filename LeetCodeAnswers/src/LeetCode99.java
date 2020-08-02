@@ -43,4 +43,29 @@ public class LeetCode99 {
 		 TreeNode right;
 		 TreeNode(int x) { val = x; }
 	}
+	 //O(h) space
+	 class Solution2 {
+		    TreeNode first = null, second = null, prev = null;
+		    public void recoverTree(TreeNode root) {
+		        getSwappedNodes(root);
+		        swap(first, second);
+		            
+		    }
+		    //Inorder Traversal
+		    public void getSwappedNodes(TreeNode root){
+		        if (root == null) return;
+		        getSwappedNodes(root.left);
+		        if (prev != null && root.val < prev.val){
+		            if (first == null)  first= prev;
+		            second = root;
+		        }
+		        prev = root;
+		        getSwappedNodes(root.right);
+		    }
+		    public void swap(TreeNode first, TreeNode second){
+		        int temp = first.val;
+		        first.val = second.val;
+		        second.val = temp;
+		    }
+		}
 }

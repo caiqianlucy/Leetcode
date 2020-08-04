@@ -61,4 +61,7 @@ public class LeetCode843 {
         for (int i = 0; i < res.length; i++) res[i] = list.get(i);
         return res;
     }
+    interface Master {
+    	     public default int guess(String word) {}
+    }
 }

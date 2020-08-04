@@ -49,7 +49,8 @@ public class LFUCache {
             node.value = value;
             update(node);
         } else {
-            Node newNode = new Node(key, value);	           	         map.put(key, newNode);	
+            Node newNode = new Node(key, value);	           	        
+            map.put(key, newNode);	
             //System.out.println("size: " + size + " capacity: " + capacity);
             if (size == capacity){
                 DList minList = count.get(min);
@@ -95,7 +96,7 @@ class DList {
         tail.prev = head;
         size = 0;
     }
-    private void addNode(Node node){
+    private void addNode(Node node){\
         node.prev = head;
         node.next = head.next;
         head.next.prev = node;

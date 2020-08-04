@@ -72,7 +72,7 @@ public class LeetCode924 {
 	            }
 	        }  
 	    }
-	    class Solution {
+	    class Solution2{
 	        public int minMalwareSpread(int[][] graph, int[] initial) {
 	            //color each node
 	            int n = graph.length;

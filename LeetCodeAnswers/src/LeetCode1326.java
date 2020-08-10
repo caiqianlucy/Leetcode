@@ -76,8 +76,11 @@ public class LeetCode1326 {
 	        for (int i = 0; i <= n; i++){
 	            int l = intervals[i][0], r = intervals[i][1];
 	            if (l <= 0) {
-	                stack = new Stack();
-	                stack.push(r);               
+                    if (stack.isEmpty() ||(!stack.isEmpty() && stack.peek() < r)){
+                    stack = new Stack();
+	                stack.push(r);  
+                    }
+	                            
 	            }
 	            else {
 	                if (!stack.isEmpty() && (l > stack.peek() || r <= stack.peek())) continue;

@@ -34,4 +34,24 @@ public class LeetCode57 {
         }
         return ans;
     }
+	//simpler version, add each region all once
+	public int[][] insert2(int[][] intervals, int[] newInterval) {
+        List<int[]> res = new ArrayList();
+        int newStart = newInterval[0], newEnd = newInterval[1];
+        int i = 0;
+        int n = intervals.length;
+        while (i < n && intervals[i][1] < newStart){
+            res.add(intervals[i++]);
+        }
+        while (i < n && intervals[i][0] <= newEnd){
+            newStart = Math.min(intervals[i][0], newStart);
+            newEnd =Math.max(intervals[i][1], newEnd);
+            i++;
+        }
+        res.add(new int[]{newStart, newEnd});
+        while (i < n){
+            res.add(intervals[i++]);
+        }
+        return res.toArray(new int[res.size()][2]);
+    }
 }

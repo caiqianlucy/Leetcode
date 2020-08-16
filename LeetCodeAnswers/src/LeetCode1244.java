@@ -51,4 +51,49 @@ class LeetCode1244Leaderboard {
         pq.offer(playerId);
         
     }
+    //Solution2: HashMap + treeMap
+    class Leaderboard {
+        Map<Integer, Integer> idToScore;
+        TreeMap<Integer, Integer> tm; //score to counts of the score
+        public Leaderboard() {
+            tm = new TreeMap();
+            idToScore = new HashMap();
+        }
+        
+        public void addScore(int playerId, int score) {
+            int oldScore = idToScore.getOrDefault(playerId, 0);
+            if (oldScore != 0){
+                tm.put(oldScore, tm.get(oldScore)-1);
+                 if (tm.get(oldScore) == 0) tm.remove(oldScore);
+            } 
+           
+            int newScore = oldScore + score;
+            idToScore.put(playerId, newScore);
+            tm.put(newScore, tm.getOrDefault(newScore, 0) + 1);
+        }
+        
+        public int top(int K) {
+            int res = 0;
+            Integer max = tm.lastKey();
+            while (K >0 && max != null){
+                int score = tm.floorKey(max);
+                int count = tm.get(score);
+                int c = Math.min(count, K);
+                res += c*score;
+                K-= c;
+                max = tm.lowerKey(score);
+            }
+            return res;
+        }
+        
+        public void reset(int playerId) {
+            int oldScore = idToScore.getOrDefault(playerId, 0);
+            if (oldScore != 0){
+                tm.put(oldScore, tm.get(oldScore)-1);
+                if (tm.get(oldScore) == 0) tm.remove(oldScore);
+            }
+            idToScore.remove(playerId);
+        }
+    }
+
 }

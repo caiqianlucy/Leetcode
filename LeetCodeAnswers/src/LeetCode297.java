@@ -9,7 +9,8 @@ Design an algorithm to serialize and deserialize a binary tree. There is no
 restriction on how your serialization/deserialization algorithm should work. 
 You just need to ensure that a binary tree can be serialized to a string and
  this string can be deserialized to the original tree structure.
- * Preorder traversal, time, space O(n)
+ * solution 1: Preorder traversal, time, space O(n) string concatenation takes O(n) time, worst case O(n^2)
+ * Solution 2: time, space: O(n)
  */
 import java.util.*;
 public class LeetCode297 {

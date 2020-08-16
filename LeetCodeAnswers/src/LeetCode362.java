@@ -10,10 +10,10 @@ It is possible that several hits arrive roughly at the same time.
  */
 import java.util.*;
 public class LeetCode362 {
-	class HitCounter {
+	class HitCounter1 {
 	    Queue<Integer> queue;
 	    /** Initialize your data structure here. */
-	    public HitCounter() {
+	    public HitCounter1() {
 	        queue = new LinkedList();
 	    }
 	    
@@ -36,11 +36,11 @@ public class LeetCode362 {
 	        }
 	    }
 	}
-	class HitCounter {
+	class HitCounter2 {
 	    int size;
 	    Deque<int[]> deque;
 	    /** Initialize your data structure here. */
-	    public HitCounter() {
+	    public HitCounter2() {
 	        size = 0;
 	        deque = new LinkedList();
 	    }

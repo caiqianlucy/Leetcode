@@ -1,4 +1,6 @@
+import java.awt.Point;
 import java.util.*;
+
 
 public class LeetCode489 {
 	interface Robot {
@@ -15,20 +17,20 @@ public class LeetCode489 {
 		     public void clean();
 		 }
 	int[][] dirs = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}}; //right turn after each direction
-    Set<Pair> visited = new HashSet();
+    Set<Point> visited = new HashSet();
     Robot robot;
     public void cleanRoom(Robot robot) {
         this.robot = robot;
         backtrack(0, 0, 0);  //initial x, y, direction
     }
     public void backtrack(int row, int col, int d){
-        visited.add(new Pair(row, col));
+        visited.add(new Point(row, col));
         robot.clean();
         for (int i = 0; i < 4; i++){
             int newD = (d+i) % 4;
             int x = row + dirs[newD][0];
             int y = col + dirs[newD][1];
-            if (!visited.contains(new Pair(x, y)) && robot.move()){
+            if (!visited.contains(new Point(x, y)) && robot.move()){
                 backtrack(x, y, newD);
                 goBack();
             }

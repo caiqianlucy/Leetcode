@@ -38,4 +38,27 @@ public class LeetCode818 {
         }
         return dp[target];
     }
+	//simpler version without using trailing 0
+	class Solution {
+	    public int racecar(int target) {
+	        int[] dp = new int[target+1];
+	        for (int i = 1; i <= target; i++){
+	            dp[i] = Integer.MAX_VALUE;
+	            int j = 1, fwdCnt = 1;
+	            while (j < i){              
+	                if (j >= i) break;
+	                int k = 0, bcwdCnt = 0;
+	                while (k < j){
+	                    dp[i] = Math.min(dp[i], fwdCnt + bcwdCnt + 2 + dp[i-(j-k)]);
+	                    k = (1<<++bcwdCnt)-1;
+	                }
+	                j = (1<<++fwdCnt)-1;
+	            }
+	            if (j == i) dp[i] = Math.min(fwdCnt, dp[i]);
+	            dp[i] = Math.min(dp[i], fwdCnt + dp[j-i] + 1);
+	        }
+	        return dp[target];
+	    }
+	}
+	
 }

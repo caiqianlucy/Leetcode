@@ -96,8 +96,7 @@ class DList {
         tail.prev = head;
         size = 0;
     }
-    private void addNode(Node node){\
-        node.prev = head;
+    private void addNode(Node node){
         node.next = head.next;
         head.next.prev = node;
         head.next = node;

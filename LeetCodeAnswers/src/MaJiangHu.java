@@ -16,7 +16,7 @@ public class MaJiangHu {
 			count[arr[i]]++;
 		}
 		for (int i = 1; i < 10; i++) {
-			if (count[i] > 2) {
+			if (count[i] >= 2) {
 				count[i] -= 2;
 				if (helper(count)) return true;
 				count[i] += 2;
@@ -25,15 +25,15 @@ public class MaJiangHu {
 		return false;
 	}
 	public static boolean helper(int[] count) {
-		
+		int[] temp = count.clone();
 		for (int i = 1; i <= 7; i++) {
 			int str = count[i]%3;
-			count[i] -= str;
+			temp[i] -= str;
 			if (count[i+1] < str || count[i+2] < str) return false;
-			count[i+1] -= str;
-			count[i+2] -= str;
+			temp[i+1] -= str;
+			temp[i+2] -= str;
 		}
-		return count[8] % 3 == 0 && count[9] % 3 == 0;
+		return temp[8] % 3 == 0 && temp[9] % 3 == 0;
 	}
 	public static void main(String[] args) {
 		int[] arr = new int[] {1, 1, 2, 3, 2, 2, 2};
